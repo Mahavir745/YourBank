@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 import mainPage from "../../assets/assest02.jpg"
 import { BsBank } from 'react-icons/bs'
@@ -17,6 +17,7 @@ const ApplicationStatus = () => {
   const [cardState, setCardState] = useState(false)
   const [tabs, setTabs] = useState(false);
   const navigate = useNavigate();
+  const tabRef = useRef();
   const {setIsLogin} = useOutletContext()
 
   useEffect(() => {
@@ -48,6 +49,19 @@ const ApplicationStatus = () => {
     navigate("/")
   }
 
+  useEffect(()=>{
+    const HanldeTab = (event)=>{
+      if(tabRef.current && !tabRef.current.contains(event.target)){
+        setTabs(false)
+      }
+    }
+    document.addEventListener("mousedown",HanldeTab);
+
+    return ()=>{
+      document.removeEventListener("mousedown",HanldeTab)
+    }
+  },[])
+
   return (
     <div className='flex justify-center relative h-full min-h-[300px] mb-40 mt-20'>
       <div className='flex items-center justify-center absolute bg-white -top-10 right-10 p-1 cursor-pointer' >
@@ -55,7 +69,7 @@ const ApplicationStatus = () => {
           setTabs(state => !state)
         }} />
       </div>
-      {tabs && <div className='flex items-center flex-col justify-center absolute z-40 top-0 right-12 bg-gray-100 w-[180px] font-bold rounded-md cursor-pointer p-2'>
+      {tabs && <div className='flex items-center flex-col justify-center absolute z-40 top-0 right-12 bg-gray-100 w-[180px] font-bold rounded-md cursor-pointer p-2' ref={tabRef}>
         <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/profile") }}>Profile</p>
         <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleLogOUt}>Log Out</p>
       </div>}
