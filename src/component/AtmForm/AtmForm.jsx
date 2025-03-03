@@ -38,7 +38,7 @@ const AtmForm = ({setClose}) => {
       style={{
         background: "#8b8989bb"
       }}>
-      <div className='w-full lg:w-[600px] relative top-20 m-2 border rounded-b-xl min-h-[300px] bg-white rounded-t-md border-gray-300 p-4 popup' ref={atmref}>
+      <div className='w-full lg:w-[600px] absolute top-15 m-2 border rounded-b-xl min-h-[300px] bg-white rounded-t-md border-gray-300 p-4 popup' ref={atmref}>
         <div className='relative flex justify-center'>
           <h1 className='text-center text-xl font-medium text-blue-600'>Apply ATM</h1>
           <CgClose className='absolute right-0 text-xl cursor-pointer' onClick={HandleClose} />

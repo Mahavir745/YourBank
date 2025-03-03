@@ -20,12 +20,12 @@ const Verify = ({setCardState}) => {
     <div className='flex justify-center items-center z-40 h-full mb-40 mt-20 fixed top-0 w-full' style={{
       background:"#8b8989bb"
     }}>
-      <div className=' lg:w-[600px] h-[340px] bg-white relative border rounded-b-xl rounded-t-md border-gray-300 p-4 popup'>
+      <div className='w-full m-2 lg:w-[600px] h-[340px] bg-white relative border rounded-b-xl rounded-t-md border-gray-300 p-4 popup'>
         <div className='flex justify-center items-center'>
           <h1 className='text-center text-xl font-medium text-blue-600'>Verify</h1>
           <CgClose className='absolute right-4 text-xl cursor-pointer' onClick={HandleCutOption}/>
         </div>
-        <form action="#" className='w-[200px] lg:w-[580px] ' onSubmit={(e)=>HandleVerifyBtn(e)}>
+        <form action="#" className='w-full lg:w-[580px] ' onSubmit={(e)=>HandleVerifyBtn(e)}>
           <div className=' p-2 m-2'>
             <label htmlFor="accountHolder" className='font-medium text-gray-600'>Registered Number: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
@@ -35,7 +35,7 @@ const Verify = ({setCardState}) => {
           <div className=' p-2 m-2'>
             <label htmlFor="password" className='font-medium text-gray-600'>Password: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
-              <input type={eyehide2 ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500' placeholder='password' id='password' />
+              <input type={eyehide2 ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] w-[80%] text-gray-500' placeholder='password' id='password' />
               {eyehide2 ? <BsEyeSlash className='text-blue-600 text-[18px]' onClick={() => setEyeHide2(state => !state)} /> : <BsEye className='text-blue-600 text-[18px]' onClick={() => setEyeHide2(state => !state)} />}
             </div>
           </div>

@@ -78,17 +78,17 @@ const PaymentMode = () => {
 
 
   return (
-    <div className='flex justify-center h-full w-full mb-40 mt-20  z-50 items-center gap-20'>
-      <div className='w-[600px] min-h-[300px] relative border rounded-b-xl rounded-t-md border-gray-300 p-4 bg-white' ref={closeRef}>
-        <div className='flex relative justify-center'>
+    <div className='flex justify-center flex-wrap h-full w-full mb-40 mt-20  z-50 items-center gap-20'>
+      <div className='w-full lg:w-[600px] min-h-[300px] relative border rounded-b-xl rounded-t-md border-gray-300 p-4 bg-white m-2' ref={closeRef}>
+        <div className='flex relative justify-center '>
           <h1 className='text-center text-xl font-medium text-blue-600'>Payment By Debit/Credit</h1>
           <CgClose className='absolute right-0 text-xl cursor-pointer' onClick={HandleClose} />
         </div>
-        <form action="#" className={`w-[580px] ${tiggerTimer && "cursor-not-allowed"}`} onSubmit={(e) => HandleSubmit(e)}>
+        <form action="#" className={`w-full  lg:w-[580px] ${tiggerTimer && "cursor-not-allowed"}`} onSubmit={(e) => HandleSubmit(e)}>
           <div className=' p-2 m-2'>
             <label htmlFor="accountHolder" className='font-medium text-gray-600'>Card Number: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
-              <input type={eyehide ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500 text-2xl tracking-[4px]' placeholder='XXXXXXXXXXXX' id='accountHolder' disabled={tiggerTimer} />
+              <input type={eyehide ? "password" : "text"} className=' w-[80%] focus:outline-0 pl-4 text-[16px] text-gray-500 text-2xl tracking-[4px]' placeholder='XXXXXXXXXXXX' id='accountHolder' disabled={tiggerTimer} />
               {eyehide ? <BsEyeSlash className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} /> : <BsEye className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} />}
             </div>
           </div>
@@ -98,7 +98,7 @@ const PaymentMode = () => {
               <input type="text" className=' focus:outline-0 pl-4 text-[16px] text-gray-500' placeholder='Enter your name' id='accountHolderName' disabled={tiggerTimer} />
             </div>
           </div>
-          <div className='flex'>
+          <div className='flex flex-wrap'>
             <div className=' p-2 m-2'>
               <label htmlFor="exp" className='font-medium text-gray-600'>Exp. <span className='text-red-700'>*</span></label>
               <div className='flex gap-2 flex-wrap mt-2 items-center'>
@@ -139,7 +139,7 @@ const PaymentMode = () => {
       </div>
 
       {/* payment recipts */}
-      {timer2 === 0 && <div className='border w-[500px] min-h-[400px] border-gray-300 rounded-xl p-4 '>
+      {timer2 === 0 && <div className='border m-2 w-[500px] min-h-[400px] border-gray-300 rounded-xl p-4 '>
         <div>
           <h1 className='text-xl font-bold text-center underline'>Payment Recipt</h1>
         </div>

@@ -63,7 +63,7 @@ const ApplicationStatus = () => {
   },[])
 
   return (
-    <div className='flex justify-center relative h-full min-h-[300px] mb-40 mt-20'>
+    <div className='w-full flex justify-center flex-wrap relative h-full min-h-[300px] mb-40 mt-20'>
       <div className='flex items-center justify-center absolute bg-white -top-10 right-10 p-1 cursor-pointer' >
         <BiMenu className='text-4xl text-gray-700 cursor-pointer z-20' onClick={() => {
           setTabs(state => !state)
@@ -73,9 +73,9 @@ const ApplicationStatus = () => {
         <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/profile") }}>Profile</p>
         <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleLogOUt}>Log Out</p>
       </div>}
-      <div className='rounded-xl overflow-hidden w-[800px] h-[600px] relative flex justify-center items-center flex-col'>
+      <div className='rounded-xl overflow-hidden w-[800px] h-[500px] relative flex justify-center items-center flex-col'>
         <BsBank className='text-8xl text-gray-600' />
-        <h1 className=' z-40 text-8xl top-40 left-24 text-white font-bold'
+        <h1 className=' z-40 text-6xl lg:text-8xl top-40 left-24 text-white font-bold'
           style={{
             backgroundImage: `url(${mainPage})`,
             backgroundPosition: "0px",
@@ -84,40 +84,40 @@ const ApplicationStatus = () => {
           }}
         ><span>Your</span><span>Bank</span></h1>
         <ul className='flex gap-4'>
-          <li className='w-34 h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
+          <li className='w-14 h-14 md:w-24 md:h-24 lg:w-34 lg:h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
             transition: "all .3s linear"
           }}>
-            <AiFillSafetyCertificate className='text-8xl text-violet-500' /></li>
-          <li className='w-34 h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
+            <AiFillSafetyCertificate className='text-4xl lg:text-8xl text-violet-500' /></li>
+          <li className='w-14 h-14 md:w-24 md:h-24 lg:w-34 lg:h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
             transition: "all .3s linear"
           }}>
-            <FaRegCreditCard className='text-8xl text-cyan-600' /></li>
-          <li className='w-34 h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
+            <FaRegCreditCard className='text-4xl lg:text-8xl text-cyan-600' /></li>
+          <li className='w-14 h-14 md:w-24 md:h-24 lg:w-34 lg:h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
             transition: "all .3s linear"
           }}>
-            <HiMiniCurrencyRupee className='text-8xl text-gray-800' /></li>
-          <li className='w-34 h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
+            <HiMiniCurrencyRupee className='text-4xl lg:text-8xl text-gray-800' /></li>
+          <li className='w-14 h-14 md:w-24 md:h-24 lg:w-34 lg:h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
             transition: "all .3s linear"
           }}>
-            <CgProfile className='text-8xl text-blue-500' /></li>
+            <CgProfile className='text-4xl lg:text-8xl text-blue-500' /></li>
         </ul>
       </div>
       {cardState && <Verify setCardState={setCardState} />}
-      <div className='w-[600px] relative border rounded-b-xl rounded-t-md border-gray-300 bg-white p-4'>
+      <div className='w-full lg:w-[600px] relative rounded-b-xl rounded-t-md border-0 md:border-gray-300 bg-white p-4'>
         <div>
           <h1 className='text-center text-xl font-medium text-blue-600'>Application Status for Debit Card</h1>
         </div>
-        <div className='w-[580px] flex flex-col'>
+        <div className='w-full lg:w-[580px] flex flex-col'>
           <div className=' p-2 m-2 flex w-full justify-around items-center'>
-            <div className='border w-28 h-28 rounded-full border-gray-300 flex justify-center items-center'>
+            <div className='border-0 w-28 h-28 rounded-full md:border-gray-300 flex justify-center items-center'>
               <BsFillCheckCircleFill className='text-5xl text-green-500 border rounded-full p-2' />
             </div>
             <div className='h-28 w-[400px] flex flex-col justify-center relative'>
-              <div className=' text-center text-gray-900 font-medium text-2xl'>1234567890AWEFDGSHS</div>
+              <div className=' text-center text-gray-900 font-medium md:text-2xl'>1234567890AWEFDGSHS</div>
               <div className='mt-4 text-center absolute top-[160px] right-[160px] text-[72px] text-gray-400'>{timer} s</div>
             </div>
           </div>
-          <div className='w-[8px] h-[220px] border border-slate-200 rounded-xl relative left-20 '>
+          <div className='w-[8px] h-[220px] border border-slate-200 rounded-xl relative left-12 lg:left-20 '>
             <div className={`bg-green-400 absolute w-full border border-green-400`}
               style={{
                 height: `${levelMeasurement}%`,
@@ -126,7 +126,7 @@ const ApplicationStatus = () => {
             ></div>
           </div>
           <div className=' p-2 m-2 flex w-full justify-around items-center'>
-            <div className='border w-28 h-28 rounded-full border-gray-300 flex items-center justify-center'>
+            <div className='border-0 w-28 h-28 rounded-full lg:border-gray-300 flex items-center justify-center'>
               <BsFillCheckCircleFill className={`text-5xl border rounded-full p-2 ${progress === 30 ? "text-green-500" : "text-gray-400"}`} />
             </div>
             <div className='h-28 w-[400px] flex flex-col justify-center'>

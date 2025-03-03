@@ -85,7 +85,7 @@ const Profile = () => {
       {withdrawTab && <PaymentType setClose={setWithdrawTab} />}
       {checkbalance && <Pin setCardState={setCheckBalance} setBalanceCheck={setBalanceCheck} />}
       <div className='w-full min-h-[600px] flex flex-col sm:flex-row items-center justify-evenly relative'>
-        <div className='flex  items-center justify-center absolute top-4 right-10 p-1 cursor-pointer' onClick={HandleSwitch} >
+        <div className='flex  items-center justify-center absolute top-4 right-10 p-1 cursor-pointer border rounded-md' onClick={HandleSwitch} >
           <BiMenu className='text-4xl text-gray-700' />
         </div>
       
