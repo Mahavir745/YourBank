@@ -114,7 +114,7 @@ const ApplicationStatus = () => {
             </div>
             <div className='h-28 w-[400px] flex flex-col justify-center relative'>
               <div className=' text-center text-gray-900 font-medium md:text-2xl'>1234567890AWEFDGSHS</div>
-              <div className='mt-4 text-center absolute top-[160px] right-[160px] text-[72px] text-gray-400'>{timer} s</div>
+              <div className='mt-4 text-center absolute top-[160px] right-[160px] text-[48px] md:text-[72px] text-gray-400'>{timer} s</div>
             </div>
           </div>
           <div className='w-[8px] h-[220px] border border-slate-200 rounded-xl relative left-12 lg:left-20 '>
