@@ -117,7 +117,7 @@ const ApplicationStatus = () => {
               <div className='mt-4 text-center absolute top-[160px] right-[160px] text-[48px] md:text-[72px] text-gray-400'>{timer} s</div>
             </div>
           </div>
-          <div className='w-[8px] h-[220px] border border-slate-200 rounded-xl relative left-12 lg:left-20 '>
+          <div className='w-[8px] h-[220px] border border-slate-200 rounded-xl relative left-12 sm:left-30 lg:left-20 '>
             <div className={`bg-green-400 absolute w-full border border-green-400`}
               style={{
                 height: `${levelMeasurement}%`,
