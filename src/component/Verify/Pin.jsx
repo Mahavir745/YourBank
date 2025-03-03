@@ -38,12 +38,12 @@ const Pin = ({ setCardState, setBalanceCheck }) => {
     <div className='flex justify-center items-center z-40 h-full mb-40 fixed top-0 w-full' style={{
       background: "#8b8989bb"
     }}>
-      <div className='w-[600px] h-[240px] bg-white relative border rounded-b-xl rounded-t-md border-gray-300 p-4 popup' ref={menuRef}>
+      <div className=' w-full lg:w-[600px] m-2 h-[240px] bg-white relative border rounded-b-xl rounded-t-md border-gray-300 p-4 popup' ref={menuRef}>
         <div className='flex justify-center items-center'>
           <h1 className='text-center text-xl font-medium text-blue-600'>Verify</h1>
           <CgClose className='absolute right-4 text-xl cursor-pointer' onClick={HandleCutOption} />
         </div>
-        <form action="#" className='w-[580px] ' onSubmit={(e) => HandleVerifyBtn(e)}>
+        <form action="#" className='w-full lg:w-[580px] ' onSubmit={(e) => HandleVerifyBtn(e)}>
           <div className=' p-2 m-2'>
             <label htmlFor="password" className='font-medium text-gray-600'>PIN: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>

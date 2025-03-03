@@ -9,7 +9,7 @@ import { CgProfile } from 'react-icons/cg'
 const Service = () => {
   return (
     <div className=''>
-      <div className=' w-full min-h-[500px] m-auto p-4 mt-14'>
+      <div className=' w-full min-h-[500px] m-auto p-4 mt-14 lg:mb-34'>
         <h1 className='text-4xl text-gray-600 text-center font-bold w-full mb-20'>Services</h1>
         <ul className=' sm:ml-6 flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-start sm:flex-wrap mt-5'>
           <li className='font-bold p-4 rounded-md  bg-gray-300 text-black w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 ' style={{
@@ -17,7 +17,7 @@ const Service = () => {
           }}>
             <CgProfile className='text-8xl' /><span className='text-2xl'>Create Account</span>
           </li>
-          <li className='font-bold p-4 rounded-md bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative lg:top-o xl:top-10' style={{
+          <li className='font-bold p-4 rounded-md bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative  xl:top-0' style={{
             transition: "all .3s linear"
           }}>
             <BiMoneyWithdraw className='text-8xl' /><span className='text-2xl'>Withdraw & deposit</span>
@@ -27,7 +27,7 @@ const Service = () => {
           }}>
             <CiBookmarkCheck className='text-8xl' /><span className='text-2xl'>Check Balance</span>
           </li>
-          <li className='font-bold p-4 rounded-md  bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative xl:top-10 lg:top-0' style={{
+          <li className='font-bold p-4 rounded-md  bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative xl:top-0' style={{
             transition: "all .3s linear"
           }}>
             <CiCreditCard1 className='text-8xl' /><span className='text-2xl'>Apply Debit Card</span>

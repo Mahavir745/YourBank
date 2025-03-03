@@ -45,9 +45,9 @@ const Header = ({isLogin}) => {
               <NavLink className={({ isActive }) => `${isActive ? "text-gray-700" : "text-white"}`} to="/">
                 <li className='font-bold hover:bg-slate-400 pl-4 pr-4 pt-2 pb-2 rounded-md'>Home</li>
               </NavLink>
-              <NavLink className={({ isActive }) => `${isActive ? "text-gray-700" : "text-white"}`} to="/createAccount">
+              {!isLogin && <NavLink className={({ isActive }) => `${isActive ? "text-gray-700" : "text-white"}`} to="/createAccount">
                 <li className='font-bold hover:bg-slate-400 pl-4 pr-4 pt-2 pb-2 rounded-md text-[14px]'>Create Account/Login</li>
-              </NavLink>          
+              </NavLink>  }        
               {isLogin && <NavLink className={({ isActive }) => `${isActive ? "text-gray-700" : "text-white"}`} to="/profile">
                 <li className='font-bold hover:bg-slate-400 pl-4 pr-4 pt-2 pb-2 rounded-md'><CgProfile className='text-4xl text-gray-700' /></li>
               </NavLink>}

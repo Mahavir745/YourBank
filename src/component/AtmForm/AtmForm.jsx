@@ -38,12 +38,12 @@ const AtmForm = ({setClose}) => {
       style={{
         background: "#8b8989bb"
       }}>
-      <div className='w-[600px] absolute border rounded-b-xl min-h-[300px] bg-white rounded-t-md border-gray-300 p-4 popup' ref={atmref}>
+      <div className='w-full lg:w-[600px] relative top-20 m-2 border rounded-b-xl min-h-[300px] bg-white rounded-t-md border-gray-300 p-4 popup' ref={atmref}>
         <div className='relative flex justify-center'>
           <h1 className='text-center text-xl font-medium text-blue-600'>Apply ATM</h1>
           <CgClose className='absolute right-0 text-xl cursor-pointer' onClick={HandleClose} />
         </div>
-        <form action="#" className='w-[580px]' onSubmit={(e) => HandleApplyform(e)}>
+        <form action="#" className='w-full lg:w-[580px]' onSubmit={(e) => HandleApplyform(e)}>
           <div className=' p-2 m-2'>
             <label htmlFor="loginaccount" className='font-medium text-gray-600'>Email/Contact No: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2' >

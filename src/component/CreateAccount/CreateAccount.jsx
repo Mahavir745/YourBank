@@ -8,15 +8,17 @@ import { BsBank } from 'react-icons/bs'
 const CreateAccount = () => {
 
   const [eyehide, setEyeHide] = useState(true)
+  const [screenWidth, setScreenWidth] = useState(window.outerWidth)
   const navigate = useNavigate();
-  const HandleCreateFrom = (e)=>{
+  const HandleCreateFrom = (e) => {
     e.preventDefault();
     navigate("/login")
   }
 
+  console.log(screenWidth)
   return (
-    <div className='flex justify-around h-full min-h-[900px] pb-40 pt-20  bg-contain'>
-      <div className='w-[50%] flex  h-[500px] items-center justify-center gap-10 fixed mt-20 left-0'>
+    <div className='flex md:flex-col lg:flex-row justify-around items-center lg:items-start h-full min-h-[900px] pb-40 pt-20  bg-contain'>
+      {screenWidth > 480 && <div className='w-[100%] lg:w-[50%] flex  h-[500px] items-center justify-center gap-10 fixed mt-20 left-0'>
         <div className=' w-[400px] h-[400px] flex justify-center items-center flex-shrink-0 rounded-2xl bg-white rotate-45 z-10 shadow-xl'>
           <h1 className=' text-8xl top-40 left-24 text-white font-bold -rotate-45 z-20'
             style={{
@@ -30,12 +32,12 @@ const CreateAccount = () => {
         <div className=' w-[200px] h-[200px] flex-shrink-0 flex justify-center items-center rounded-2xl bg-gray-200 rotate-45'>
           <BsBank className='text-8xl text-gray-600 -rotate-45' />
         </div>
-      </div>
-      <div className='w-[600px] relative border rounded-b-xl rounded-t-md border-gray-300 p-4 bg-white ml-[500px]'>
+      </div>}
+      <div className=' w-full m-2 sm:w-[700px] relative border rounded-b-xl rounded-t-md border-gray-300 p-4 bg-white lg:ml-[100px] xl:ml-[600px]'>
         <div>
           <h1 className='text-center text-xl font-medium text-blue-600'>Create Account</h1>
         </div>
-        <form action="#" className='w-[580px]' onSubmit={(e)=> HandleCreateFrom(e)}>
+        <form action="#" className=' w-full lg:w-[580px]' onSubmit={(e) => HandleCreateFrom(e)}>
           <div className=' p-2 m-2'>
             <label htmlFor="costumerName" className='font-medium text-gray-600'>Full Name: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2'>

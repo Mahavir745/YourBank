@@ -8,6 +8,8 @@ const Login = () => {
   const [eyehide, setEyeHide] = useState(true)
   const navigate = useNavigate();
   const {setIsLogin} = useOutletContext();
+    const [screenWidth, setScreenWidth] = useState(window.outerWidth)
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,12 +18,12 @@ const Login = () => {
   }
 
   return (
-    <div className='flex justify-center h-full min-h-[300px] mb-40 mt-20'>
-      <div className='w-[600px] h-[380px] relative border rounded-b-xl rounded-t-md border-gray-300 p-4'>
+    <div className='flex justify-center md:flex-col md:items-center lg:items-start lg:flex-row h-full min-h-[300px] mb-40 mt-20'>
+      <div className='w-full m-2 md:w-[600px] h-[380px] relative border rounded-b-xl rounded-t-md border-gray-300 bg-white p-4'>
         <div>
           <h1 className='text-center text-xl font-medium text-blue-600'>Login Account</h1>
         </div>
-        <form action="#" className='w-[580px]' onSubmit={(e) => handleSubmit(e)}>
+        <form action="#" className='w-full md:w-[580px]' onSubmit={(e) => handleSubmit(e)}>
           <div className=' p-2 m-2'>
             <label htmlFor="loginaccount" className='font-medium text-gray-600'>Email/Contact No: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2' >
@@ -44,9 +46,9 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <div className='w-[50%] flex  h-[500px] items-center justify-center gap-10 relative'>
-        <div className=' w-[400px] h-[400px] flex justify-center items-center flex-shrink-0 rounded-2xl bg-white rotate-45 z-10 shadow-xl'>
-          <h1 className=' text-8xl top-40 left-24 text-white font-bold -rotate-45 z-20'
+     {screenWidth > 480 && <div className='w-[50%] flex  h-[500px] items-center justify-center gap-10 md:fixed md:bottom-0 md:-z-20 lg:relative'>
+        <div className=' w-[400px] h-[400px] lg:w-[300px] lg:h-[300px] flex justify-center items-center flex-shrink-0 rounded-2xl bg-white rotate-45 z-10 shadow-xl'>
+          <h1 className=' text-8xl lg:text-6xl top-40 left-24 text-white font-bold -rotate-45 z-20'
             style={{
               backgroundImage: `url(${mainPage})`,
               backgroundPosition: "0px",
@@ -58,7 +60,7 @@ const Login = () => {
         <div className=' w-[200px] h-[200px] flex-shrink-0 flex justify-center items-center rounded-2xl bg-gray-200 rotate-45'>
           <BsBank className='text-8xl text-gray-600 -rotate-45' />
         </div>
-      </div>
+      </div>}
     </div>
   )
 }

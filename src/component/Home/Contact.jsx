@@ -7,7 +7,7 @@ const Contact = () => {
     <div className='flex w-full lg:pl-4 flex-col lg:flex-row justify-around items-center lg:items-center xl:items-start xl:justify-center sm:gap-20 sm:mt-20 md:mt-2'>
       <div className='xl:w-[50%] flex flex-col  sm:flex-row min-h-[500px] items-center justify-center gap-10 relative mt-40'>
         <div className=' w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] lg:w-[300px] lg:h-[300px] xl:w-[500px] xl:h-[500px] flex justify-center items-center flex-shrink-0 rounded-2xl bg-white rotate-45 z-10 shadow-xl'>
-          <h1 className=' text-5xl sm:text-8xl top-40 left-24 text-white font-bold -rotate-45 lg:text-6xl xl:text-9xl'
+          <h1 className=' text-5xl sm:text-8xl top-40 left-24 text-white font-bold -rotate-45 lg:text-6xl xl:text-8xl pl-8'
             style={{
               backgroundImage: `url(${mainPage})`,
               backgroundPosition: "0px",

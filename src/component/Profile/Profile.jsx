@@ -84,20 +84,20 @@ const Profile = () => {
       {atmTabClose && <AtmForm setClose={setAtmTabClose}/>}
       {withdrawTab && <PaymentType setClose={setWithdrawTab} />}
       {checkbalance && <Pin setCardState={setCheckBalance} setBalanceCheck={setBalanceCheck} />}
-      <div className='w-full min-h-[600px] flex items-center justify-evenly relative'>
-        <div className='flex items-center justify-center absolute top-4 right-10 p-1 cursor-pointer' onClick={HandleSwitch} >
+      <div className='w-full min-h-[600px] flex flex-col sm:flex-row items-center justify-evenly relative'>
+        <div className='flex  items-center justify-center absolute top-4 right-10 p-1 cursor-pointer' onClick={HandleSwitch} >
           <BiMenu className='text-4xl text-gray-700' />
         </div>
-        {outSwitch &&
-          <div className='flex items-center flex-col justify-center absolute top-14 right-12 bg-gray-100 w-[180px]  font-bold rounded-md cursor-pointer p-2' ref={menuRef}>
+      
+        {outSwitch && <div className='flex items-center flex-col justify-center absolute top-14 right-12 bg-gray-100 w-[180px] z-20 font-bold rounded-md cursor-pointer p-2' ref={menuRef} >
             <a className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' href='#profileService'>Services</a>
             <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleAtmTabClose}>Apply for Debit Card</p>
             <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/application_status") }}>Check Status</p>
             <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleLogOut}>Log Out</p>
           </div>}
-        <div className='rounded-xl overflow-hidden w-[800px] h-[600px] relative flex justify-center items-center flex-col popup'>
+        <div className='rounded-xl overflow-hidden md:w-[400px] lg:w-[800px] h-[600px] relative flex justify-center items-center flex-col popup'>
           <BsBank className='text-8xl text-gray-600' />
-          <h1 className=' z-30 text-8xl top-40 left-24 text-white font-bold'
+          <h1 className=' z-30 text-6xl sm:text-4xl top-40 left-24 text-white font-bold'
             style={{
               backgroundImage: `url(${mainPage})`,
               backgroundPosition: "0px",
@@ -106,28 +106,28 @@ const Profile = () => {
             }}
           ><span>Your</span><span>Bank</span></h1>
           <ul className='flex gap-4'>
-            <li className='w-34 h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
+            <li className='w-14 h-14 sm:w-18 sm:h-18 lg:w-34 lg:h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
               transition: "all .3s linear"
             }}>
-              <AiFillSafetyCertificate className='text-8xl text-violet-500' /></li>
-            <li className='w-34 h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
+              <AiFillSafetyCertificate className='text-8xl sm:text-6xl lg:text-8xl text-violet-500' /></li>
+            <li className='w-14 h-14 sm:w-18 sm:h-18 lg:w-34 lg:h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
               transition: "all .3s linear"
             }}>
-              <FaRegCreditCard className='text-8xl text-cyan-600' /></li>
-            <li className='w-34 h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
+              <FaRegCreditCard className='text-8xl sm:text-6xl lg:text-8xl text-cyan-600' /></li>
+            <li className='w-14 h-14 sm:w-18 sm:h-18 lg:w-34 lg:h-34 shadow-xl relative top-10 flex justify-center items-center hover:scale-95' style={{
               transition: "all .3s linear"
             }}>
-              <HiMiniCurrencyRupee className='text-8xl text-gray-800' /></li>
-            <li className='w-34 h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
+              <HiMiniCurrencyRupee className='text-8xl sm:text-6xl lg:text-8xl text-gray-800' /></li>
+            <li className='w-14 h-14 sm:w-18 sm:h-18 lg:w-34 lg:h-34 shadow-xl flex justify-center items-center hover:scale-95' style={{
               transition: "all .3s linear"
             }}>
-              <CgProfile className='text-8xl text-blue-500' /></li>
+              <CgProfile className='text-8xl sm:text-6xl lg:text-8xl text-blue-500' /></li>
           </ul>
         </div>
-        <div className='w-[800px]'>
+        <div className='w-full md:w-[400px] lg:w-[800px] relative sm:top-40 sm:mb-40 lg:top-0 lg:mb-0'>
           <div className='flex flex-col p-4  gap-2'>
             <p className='text-xl font-medium text-sky-900'>Avl Balance:</p>
-            <p className='tracking-widest font-medium text-gray-500 text-4xl flex items-center gap-0 pl-10'>{balanceCheck ? <BiRupee className='text-xl' /> : <CgLock className='text-xl' />} <span className='text-[28px] text-green-500 font-bold'>{balanceCheck ? "100000":<span className='text-[12px] tracking-normal pl-4 text-red-500'> Unlock! Verify first using 4 digit PIN</span>}</span> <span className='text-[18px] font-bold text-blue-500 pl-10'>{balanceCheck && `${timer}s`}</span> </p>
+            <p className='tracking-widest font-medium text-gray-500 text-4xl flex items-center gap-0 pl-10'>{balanceCheck ? <BiRupee className='text-xl' /> : <CgLock className='text-xl' />} <span className='text-[28px] text-green-500 font-bold'>{balanceCheck ? "100000":<span className='text-[12px] tracking-normal p-2 text-white ml-2 bg-red-500'> Unlock! Verify first using 4 digit PIN</span>}</span> <span className='text-[18px] font-bold text-blue-500 pl-10'>{balanceCheck && `${timer}s`}</span> </p>
           </div>
           <div className='flex flex-col p-4 gap-1'>
             <p className='text-xl font-medium text-sky-900'>Account Holder Name:</p>
@@ -135,7 +135,7 @@ const Profile = () => {
           </div>
           <div className='flex p-4 flex-col gap-1'>
             <p className='text-xl font-medium text-sky-900'>Account No.</p>
-            <p className='text-6xl text-gray-400 tracking-widest font-medium pl-10'>123456789012</p>
+            <p className=' text-4xl lg:text-6xl text-gray-400 tracking-widest font-medium pl-10'>123456789012</p>
           </div>
           <div className='flex flex-col justify-center items-center gap-4'>
             <div className='relative'>
@@ -149,8 +149,8 @@ const Profile = () => {
       <div className='' id='profileService'>
         <div className=' w-full min-h-[500px] m-auto p-4 mt-14'>
           <h1 className='text-4xl text-gray-600 text-center font-bold w-full mb-20'>Services</h1>
-          <ul className=' ml-6 flex gap-4 justify-center mt-5'>
-            <li className='font-bold p-4 rounded-md bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative top-10' style={{
+          <ul className=' md:ml-6 flex flex-wrap gap-4 justify-center mt-5'>
+            <li className='font-bold p-4 rounded-md bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative md:top-10' style={{
               transition: "all .3s linear"
 
             }} onClick={handleWithdraw}>
@@ -161,7 +161,7 @@ const Profile = () => {
             }} onClick={() => { setCheckBalance(state => !state) }}>
               <CiBookmarkCheck className='text-8xl' /><span className='text-2xl'>Check Balance</span>
             </li>
-            <li className='font-bold p-4 rounded-md  bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative top-10' style={{
+            <li className='font-bold p-4 rounded-md  bg-gray-800 text-white w-[300px] h-[240px] shadow-md shadow-blue-400 flex flex-col justify-center items-center gap-5 hover:scale-95 relative md:top-10' style={{
               transition: "all .3s linear"
             }} onClick={HandleAtmTabClose}>
               <CiCreditCard1 className='text-8xl' /><span className='text-2xl'>Apply Debit Card</span>
