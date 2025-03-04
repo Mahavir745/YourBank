@@ -33,7 +33,7 @@ const CreateAccount = () => {
           <BsBank className='text-8xl text-gray-600 -rotate-45' />
         </div>
       </div>}
-      <div className=' w-full m-2 sm:w-[700px] relative border rounded-b-xl rounded-t-md border-gray-300 p-4 bg-white lg:ml-[100px] xl:ml-[600px]'>
+      <div className=' w-[300px] m-2 sm:w-[700px] relative border rounded-b-xl rounded-t-md border-gray-300 p-2 sm:p-4 bg-white lg:ml-[100px] xl:ml-[600px]'>
         <div>
           <h1 className='text-center text-xl font-medium text-blue-600'>Create Account</h1>
         </div>
@@ -72,9 +72,9 @@ const CreateAccount = () => {
           </div>
           <div className=' p-2 m-2'>
             <label htmlFor="password" className='font-medium text-gray-600'>Create Password: <span className='text-red-700'>*</span></label>
-            <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-[300px] border-gray-300'>
-              <input type={eyehide ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500' placeholder='password' id='password' />
-              {eyehide ? <BsEyeSlash className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} /> : <BsEye className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} />}
+            <div className='flex gap-2 mt-2 items-center border rounded-sm h-10 w-[260px] sm:w-[300px] sm:pr-2 border-gray-300'>
+              <input type={eyehide ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500 w-[220px] sm:w-full' placeholder='password' id='password' />
+              {eyehide ? <BsEyeSlash className='text-blue-600 text-[18px] ' onClick={() => setEyeHide(state => !state)} /> : <BsEye className='text-blue-600 text-[18px] ' onClick={() => setEyeHide(state => !state)} />}
             </div>
           </div>
           <div className=' p-2 m-2'>

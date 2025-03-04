@@ -32,8 +32,8 @@ const Login = () => {
           </div>
           <div className=' p-2 m-2'>
             <label htmlFor="password" className='font-medium text-gray-600'>Password: <span className='text-red-700'>*</span></label>
-            <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
-              <input type={eyehide ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500' placeholder='password' id='password' />
+            <div className='flex gap-2 mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
+              <input type={eyehide ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500 w-[200px] sm:w-full' placeholder='password' id='password' />
               {eyehide ? <BsEyeSlash className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} /> : <BsEye className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} />}
             </div>
           </div>
