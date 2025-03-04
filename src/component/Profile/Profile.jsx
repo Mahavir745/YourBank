@@ -89,7 +89,7 @@ const Profile = () => {
           <BiMenu className='text-4xl text-gray-700' />
         </div>
       
-        {outSwitch && <div className='flex items-center flex-col justify-center absolute top-14 right-12 bg-gray-100 w-[180px] z-20 font-bold rounded-md cursor-pointer p-2' ref={menuRef} >
+        {outSwitch && <div className='flex items-center flex-col justify-center absolute top-16 right-12 bg-gray-100 w-[180px] z-20 font-bold rounded-md cursor-pointer p-2' ref={menuRef} >
             <a className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' href='#profileService'>Services</a>
             <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleAtmTabClose}>Apply for Debit Card</p>
             <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/application_status") }}>Check Status</p>

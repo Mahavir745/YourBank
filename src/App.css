@@ -12,3 +12,7 @@
     transform: scale(1);
   }
 }
+
+.overFlowScroll::-webkit-scrollbar{
+  display: none;
+}
