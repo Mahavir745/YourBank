@@ -64,10 +64,10 @@ const ApplicationStatus = () => {
 
   return (
     <div className='w-full flex justify-center flex-wrap relative h-full min-h-[300px] mb-40 mt-20'>
-      <div className='flex items-center justify-center absolute bg-white -top-10 right-10 p-1 cursor-pointer' >
-        <BiMenu className='text-4xl text-gray-700 cursor-pointer z-20' onClick={() => {
+      <div className='flex items-center justify-center absolute bg-white -top-10 right-10 p-1 cursor-pointer z-30' onClick={() => {
           setTabs(state => !state)
-        }} />
+        }} >
+        <BiMenu className='text-4xl text-gray-700 cursor-pointer z-20'/>
       </div>
       {tabs && <div className='flex items-center flex-col justify-center absolute z-40 top-0 right-12 bg-gray-100 w-[180px] font-bold rounded-md cursor-pointer p-2' ref={tabRef}>
         <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/profile") }}>Profile</p>

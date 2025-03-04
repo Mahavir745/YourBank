@@ -34,16 +34,16 @@ const AtmForm = ({setClose}) => {
   }, [])
 
   return (
-    <div className='flex justify-center w-full h-full items-center mb-40 z-40 fixed top-0'
+    <div className='flex justify-center w-full h-full items-center z-40 fixed top-0'
       style={{
         background: "#8b8989bb"
       }}>
-      <div className='w-full lg:w-[600px] absolute top-15 m-2 border rounded-b-xl min-h-[300px] bg-white rounded-t-md border-gray-300 p-4 popup' ref={atmref}>
-        <div className='relative flex justify-center'>
+      <div className='w-full lg:w-[600px] absolute m-2 border rounded-b-xl sm:h-auto sm:p-4 h-[300px] overflow-y-scroll bg-white rounded-t-md border-gray-300 popup' ref={atmref}>
+        <div className='sticky top-0 bg-gray-200 sm:bg-transparent items-center flex justify-center'>
           <h1 className='text-center text-xl font-medium text-blue-600'>Apply ATM</h1>
-          <CgClose className='absolute right-0 text-xl cursor-pointer' onClick={HandleClose} />
+          <CgClose className='absolute right-2 text-xl cursor-pointer' onClick={HandleClose} />
         </div>
-        <form action="#" className='w-full lg:w-[580px]' onSubmit={(e) => HandleApplyform(e)}>
+        <form action="#" className='w-[300px] sm:w-full lg:w-[580px]' onSubmit={(e) => HandleApplyform(e)}>
           <div className=' p-2 m-2'>
             <label htmlFor="loginaccount" className='font-medium text-gray-600'>Email/Contact No: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2' >
@@ -52,7 +52,7 @@ const AtmForm = ({setClose}) => {
           </div>
           <div className=' p-2 m-2'>
             <label htmlFor="accountHolder" className='font-medium text-gray-600'>Account Number: <span className='text-red-700'>*</span></label>
-            <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
+            <div className='flex gap-2  mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
               <input type={eyehide ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500' placeholder='Account No.' id='accountHolder' />
               {eyehide ? <BsEyeSlash className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} /> : <BsEye className='text-blue-600 text-[18px]' onClick={() => setEyeHide(state => !state)} />}
             </div>
