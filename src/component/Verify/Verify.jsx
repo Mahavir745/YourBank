@@ -7,12 +7,12 @@ import { handleAccountData } from '../Store/AccounDataStore'
 const Verify = ({setCardState}) => {
   const [eyehide2, setEyeHide2] = useState(true)
   const navigate = useNavigate()
-  const {foundUser} = useContext(handleAccountData);
+  // const {foundUser} = useContext(handleAccountData);
 
   const registerNo = useRef();
   const password = useRef();
-  const userPhoneNo = foundUser[0]?.contact;
-  const userPassword = foundUser[0]?.password;
+  // const userPhoneNo = foundUser[0]?.contact;
+  // const userPassword = foundUser[0]?.password;
 
 
   const HandleCutOption = ()=>{
@@ -21,11 +21,11 @@ const Verify = ({setCardState}) => {
 
   const HandleVerifyBtn = (e)=>{
     e.preventDefault();
+    navigate("/card")
     
 
-    if(registerNo.current.value === userPhoneNo && password.current.value === userPassword){
-      navigate("/card")
-    }
+    // if(registerNo.current.value === userPhoneNo && password.current.value === userPassword){
+    // }
   }
 
   return (

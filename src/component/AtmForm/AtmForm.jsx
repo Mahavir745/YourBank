@@ -4,7 +4,7 @@ import { CgClose } from 'react-icons/cg'
 import { RiRestartLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
-const AtmForm = ({setClose,atmStatus}) => {
+const AtmForm = ({setClose}) => {
 
   const [eyehide, setEyeHide] = useState(true)
   const navigate = useNavigate();
@@ -12,13 +12,13 @@ const AtmForm = ({setClose,atmStatus}) => {
 
   const HandleApplyform = (e) => {
     e.preventDefault();
+    navigate("/application_status")
 
-    if(!atmStatus){
-      navigate("/application_status")
-    }
-    else{
-      alert("already have")
-    }
+    // if(!atmStatus){
+    // }
+    // else{
+    //   alert("already have")
+    // }
   }
 
   const HandleClose = () => {

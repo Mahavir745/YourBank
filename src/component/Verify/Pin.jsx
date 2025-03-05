@@ -4,7 +4,7 @@ import { CgClose } from 'react-icons/cg'
 import { useNavigate } from 'react-router-dom'
 import Notification from '../Notification/Notification'
 
-const Pin = ({ setCardState, setBalanceCheck,atmPin,setAtmTab }) => {
+const Pin = ({ setCardState, setBalanceCheck,setAtmTab }) => {
   const [eyehide2, setEyeHide2] = useState(true)
   const menuRef = useRef();
   const verifyPin = useRef();
@@ -17,13 +17,13 @@ const Pin = ({ setCardState, setBalanceCheck,atmPin,setAtmTab }) => {
   const HandleVerifyBtn = (e) => {
     e.preventDefault();
     setCardState(false)
+    setBalanceCheck(true)
 
-    if(atmPin === verifyPin.current.value){
-      setBalanceCheck(true)
-    }
-    else{
-      alert("PIN INCORRECT! TRY AGAIN")
-    }
+    // if(atmPin === verifyPin.current.value){
+    // }
+    // else{
+    //   alert("PIN INCORRECT! TRY AGAIN")
+    // }
 
   }
 

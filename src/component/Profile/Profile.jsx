@@ -24,7 +24,7 @@ const Profile = () => {
   const [balanceCheck, setBalanceCheck] = useState(false)
   const [atmTabClose, setAtmTabClose] = useState(false)
   const { setIsLogin } = useOutletContext()
-  const { foundUser } = useContext(handleAccountData);
+  // const { foundUser } = useContext(handleAccountData);
 
 
   const navigate = useNavigate();
@@ -85,20 +85,20 @@ const Profile = () => {
 
   // data
 
-  const userAccountNo = foundUser[0]?.accountNo || 1212121212
-  const userAccountName = foundUser[0]?.fullName.firstName + " " + foundUser[0]?.fullName.middleName + " " + foundUser[0]?.fullName.lastName || "Account Holder Name";
-  const userAccountBalance = foundUser[0]?.amount || 0;
-  const atmPin = foundUser[0]?.atmPin || "";
-  const atmStatus = foundUser[0]?.atm;
-  const refId = foundUser[0]?.newAccountId;
+  // const userAccountNo = foundUser[0]?.accountNo || 1212121212
+  // constMahavir= foundUser[0]?.fullName.firstName + " " + foundUser[0]?.fullName.middleName + " " + foundUser[0]?.fullName.lastName || "Account Holder Name";
+  // const userAccountBalance = foundUser[0]?.amount || 0;
+  // const atmPin = foundUser[0]?.atmPin || "";
+  // const atmStatus = foundUser[0]?.atm;
+  // const refId = foundUser[0]?.newAccountId;
 
 
 
   return (
     <div>
-      {atmTabClose && <AtmForm setClose={setAtmTabClose} atmStatus = {atmStatus}/>}
+      {atmTabClose && <AtmForm setClose={setAtmTabClose} />}
       {withdrawTab && <PaymentType setClose={setWithdrawTab} />}
-      {checkbalance && <Pin setCardState={setCheckBalance} setBalanceCheck={setBalanceCheck} setAtmTab={setAtmTabClose} atmPin={atmPin} />}
+      {checkbalance && <Pin setCardState={setCheckBalance} setBalanceCheck={setBalanceCheck} setAtmTab={setAtmTabClose}  />}
       <div className='w-full min-h-[600px] flex flex-col sm:flex-row items-center justify-evenly relative'>
         <div className='flex  items-center justify-center absolute top-4 right-10 p-1 cursor-pointer border rounded-md z-30' onClick={HandleSwitch} >
           <BiMenu className='text-4xl text-gray-700' />
@@ -142,15 +142,15 @@ const Profile = () => {
         <div className='w-full md:w-[400px] lg:w-[800px] relative sm:top-40 sm:mb-40 lg:top-0 lg:mb-0'>
           <div className='flex flex-col p-4  gap-2'>
             <p className='text-xl font-medium text-sky-900'>Avl Balance:</p>
-            <p className='tracking-widest font-medium text-gray-500 text-4xl flex items-center gap-0 pl-10'>{balanceCheck ? <BiRupee className='text-xl' /> : <CgLock className='text-xl' />} <span className='text-[28px] text-green-500 font-bold'>{balanceCheck ? userAccountBalance : <span className='text-[12px] tracking-normal p-2 text-white ml-2 bg-red-500'> Unlock! Verify first using 4 digit PIN</span>}</span> <span className='text-[18px] font-bold text-blue-500 pl-10'>{balanceCheck && `${timer}s`}</span> </p>
+            <p className='tracking-widest font-medium text-gray-500 text-4xl flex items-center gap-0 pl-10'>{balanceCheck ? <BiRupee className='text-xl' /> : <CgLock className='text-xl' />} <span className='text-[28px] text-green-500 font-bold'>{balanceCheck ? "1000" : <span className='text-[12px] tracking-normal p-2 text-white ml-2 bg-red-500'> Unlock! Verify first using 4 digit PIN</span>}</span> <span className='text-[18px] font-bold text-blue-500 pl-10'>{balanceCheck && `${timer}s`}</span> </p>
           </div>
           <div className='flex flex-col p-4 gap-1'>
             <p className='text-xl font-medium text-sky-900'>Account Holder Name:</p>
-            <p className='tracking-widest font-medium text-gray-500 text-2xl pl-10'>{userAccountName}</p>
+            <p className='tracking-widest font-medium text-gray-500 text-2xl pl-10'>Mahavir</p>
           </div>
           <div className='flex p-4 flex-col gap-1'>
             <p className='text-xl font-medium text-sky-900'>Account No.</p>
-            <p className=' text-4xl lg:text-6xl text-gray-400 tracking-widest font-medium pl-10'>{userAccountNo}</p>
+            <p className=' text-4xl lg:text-6xl text-gray-400 tracking-widest font-medium pl-10'>2707131113232</p>
           </div>
           <div className='flex flex-col justify-center items-center gap-4'>
             <div className='relative'>

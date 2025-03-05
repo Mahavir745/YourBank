@@ -20,11 +20,11 @@ const ApplicationStatus = () => {
   const navigate = useNavigate();
   const tabRef = useRef();
   const { setIsLogin } = useOutletContext()
-  let { foundUser, updateAtmStatus, totalAccount,setFoundUser } = useContext(handleAccountData);
+  // let { foundUser, updateAtmStatus, totalAccount,setFoundUser } = useContext(handleAccountData);
 
   // data
-  const refId = foundUser[0]?.newAccountId;
-  console.log(refId)
+  // const refId = foundUser[0]?.newAccountId;
+  // console.log(refId)
 
   useEffect(() => {
     let run;
@@ -37,7 +37,7 @@ const ApplicationStatus = () => {
     }
     else {
       clearInterval(run)
-      updateAtmStatus(refId)
+      // updateAtmStatus(refId)
     }
 
     return () => {
@@ -48,14 +48,14 @@ const ApplicationStatus = () => {
   const levelMeasurement = (100 / 30) * progress
 
   const HandleDownloadBtn = () => {
-    const updatedUser = totalAccount.map(ac => {
-      if (ac.newAccountId === refId) {
-        return { ...foundUser[0], atm: ac.atm };
-      }
-      return ac;
-    });
+    // const updatedUser = totalAccount.map(ac => {
+    //   if (ac.newAccountId === refId) {
+    //     return { ...foundUser[0], atm: ac.atm };
+    //   }
+    //   return ac;
+    // });
 
-    setFoundUser(updatedUser)
+    // setFoundUser(updatedUser)
     setCardState(true)
   }
 
@@ -131,7 +131,7 @@ const ApplicationStatus = () => {
               <BsFillCheckCircleFill className='text-5xl text-green-500 border rounded-full p-2' />
             </div>
             <div className='h-28 w-[400px] flex flex-col justify-center relative'>
-              <div className=' text-center text-gray-900 font-medium md:text-2xl'>{refId}</div>
+              <div className=' text-center text-gray-900 font-medium md:text-2xl'>12341@yourBank</div>
               <div className='mt-4 text-center absolute top-[160px] right-[160px] text-[48px] md:text-[72px] text-gray-400'>{timer} s</div>
             </div>
           </div>

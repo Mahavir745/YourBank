@@ -18,18 +18,18 @@ const Card = () => {
   const navigate = useNavigate();
   const menuRef = useRef();
   const {setIsLogin} = useOutletContext()
-  const {foundUser} = useContext(handleAccountData);
+  // const {foundUser} = useContext(handleAccountData);
 
-  const cardNumber = foundUser[0]?.atmNo;
-  const exp = foundUser[0]?.exp;
-  const cardPIN = foundUser[0]?.atmPin;
-  const cvv = foundUser[0]?.cvv;
+  // const cardNumber = foundUser[0]?.atmNo;
+  // const exp = foundUser[0]?.exp;
+  // const cardPIN = foundUser[0]?.atmPin;
+  // const cvv = foundUser[0]?.cvv;
 
-  const cardno1 = cardNumber.split("-")[0]
-  const cardno2 = cardNumber.split("-")[1]
-  const cardno3 = cardNumber.split("-")[2]
+  // const cardno1 = cardNumber.split("-")[0]
+  // const cardno2 = cardNumber.split("-")[1]
+  // const cardno3 = cardNumber.split("-")[2]
 
-  console.log(cardNumber)
+  // console.log(cardNumber)
 
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Card = () => {
         <div className=' m-2 w-[500px] min-h-[280px] relative border rounded-xl border-gray-300 p-4 flex flex-col justify-center bg-gradient-to-bl to-sky-400 from-slate-200 popup'>
           <div className=' p-2 m-2'>
             <p className='font-medium text-gray-600 flex gap-4 text-4xl tracking-widest'>
-              <span>{cardno1}</span><span>{cardno2}</span><span>{cardno3}</span>
+              <span>1234</span><span>1234</span><span>1234</span>
             </p>
           </div>
           <div className=' p-2 m-2'>
@@ -75,18 +75,18 @@ const Card = () => {
           </div>
           <div className=' p-2 m-2'>
             <label htmlFor="exp" className="font-medium text-gray-600">Exp.</label>
-            <p className='font-medium text-gray-600' id="exp">{exp}</p>
+            <p className='font-medium text-gray-600' id="exp">1/30</p>
           </div>
         </div>
         <div className='w-[500px] m-2 min-h-[280px] relative border rounded-xl border-gray-300 p-4 flex flex-col justify-center bg-gradient-to-bl to-sky-200 from-slate-50 popup'>
           <div className=' p-2 m-2 rounded-md'>
             <p className='font-medium text-gray-600 flex justify-end bg-slate-950 gap-4 text-xl tracking-widest p-2'>
-              <span className="text-white">{cvv}</span>
+              <span className="text-white">123</span>
             </p>
           </div>
           <div className=' p-2 m-2 flex justify-between'>
             <QRCode
-              value={cardPIN}
+              value="mahavir"
               size={114}
             />
             <p className="text-[10px]">

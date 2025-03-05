@@ -14,7 +14,7 @@ const Login = () => {
   // const {totalAccount} = useContext(handleAccountData)
   const emailContact = useRef();
   const password = useRef();
-  const { addLoginAccount, setFoundUser, totalAccount } = useContext(handleAccountData);
+  const { } = useContext(handleAccountData);
 
   // const loginData = JSON.parse(localStorage.getItem("login")) || {}
 
@@ -24,19 +24,18 @@ const Login = () => {
     const email = emailContact.current.value;
     const AcPassword = password.current.value;
     const loginData = { email, AcPassword }
-    addLoginAccount(loginData);
+    // addLoginAccount(loginData);
 
-    let data = totalAccount.filter((acc) => {
-      if ((acc.emailId === loginData.email || acc.contact === loginData.email) && acc.password === loginData.AcPassword) {
-        return acc
-      }
-    })
-    
-    if (data.length > 0) {
-      navigate("/profile")
-      setIsLogin(true)
-      setFoundUser(data)
-    }
+    // let data = totalAccount.filter((acc) => {
+    //   if ((acc.emailId === loginData.email || acc.contact === loginData.email) && acc.password === loginData.AcPassword) {
+    //     return acc
+    //   }
+    // })
+
+    navigate("/profile")
+    setIsLogin(true)
+    setFoundUser(data)
+
 
   }
 
