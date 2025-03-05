@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Front from './Front'
 import About from './About'
 import Service from './Service'
 import Contact from './Contact'
 
 const Home = () => {
+  
   return (
     <div>
       <Front/>

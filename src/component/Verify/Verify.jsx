@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import { CgClose } from 'react-icons/cg'
 import { useNavigate } from 'react-router-dom'
+import { handleAccountData } from '../Store/AccounDataStore'
 
 const Verify = ({setCardState}) => {
   const [eyehide2, setEyeHide2] = useState(true)
   const navigate = useNavigate()
+  const {foundUser} = useContext(handleAccountData);
+
+  const registerNo = useRef();
+  const password = useRef();
+  const userPhoneNo = foundUser[0]?.contact;
+  const userPassword = foundUser[0]?.password;
+
 
   const HandleCutOption = ()=>{
     setCardState(false)
@@ -13,7 +21,11 @@ const Verify = ({setCardState}) => {
 
   const HandleVerifyBtn = (e)=>{
     e.preventDefault();
-    navigate("/card")
+    
+
+    if(registerNo.current.value === userPhoneNo && password.current.value === userPassword){
+      navigate("/card")
+    }
   }
 
   return (
@@ -29,13 +41,13 @@ const Verify = ({setCardState}) => {
           <div className=' p-2 m-2'>
             <label htmlFor="accountHolder" className='font-medium text-gray-600'>Registered Number: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
-              <input type="number" className=' focus:outline-0 pl-4 text-[16px] text-gray-500 text-2xl tracking-[4px] w-full' placeholder='Phone Number' id='accountHolder' />
+              <input type="number" className=' focus:outline-0 pl-4 text-[16px] text-gray-500 text-2xl tracking-[4px] w-full' placeholder='Phone Number' id='accountHolder' ref={registerNo}/>
             </div>
           </div>
           <div className=' p-2 m-2'>
             <label htmlFor="password" className='font-medium text-gray-600'>Password: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
-              <input type={eyehide2 ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] w-[80%] text-gray-500' placeholder='password' id='password' />
+              <input type={eyehide2 ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] w-[80%] text-gray-500' placeholder='password' id='password' ref={password}/>
               {eyehide2 ? <BsEyeSlash className='text-blue-600 text-[18px]' onClick={() => setEyeHide2(state => !state)} /> : <BsEye className='text-blue-600 text-[18px]' onClick={() => setEyeHide2(state => !state)} />}
             </div>
           </div>

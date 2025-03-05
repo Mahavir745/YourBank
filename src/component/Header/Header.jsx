@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { use, useEffect, useRef, useState } from 'react'
 import { NavLink, useOutletContext} from 'react-router-dom'
 import { RxCross1 } from "react-icons/rx";
 import { BiMenu } from 'react-icons/bi';
@@ -12,12 +12,10 @@ const Header = ({isLogin}) => {
   const [foundWidth, setFoundWidth] = useState(window.outerWidth)
   const menuRef = useRef()
 
-  
+
   const HandleToggle = () => {
     setMenuState(state => !state);
   }
-
-  console.log(window.outerWidth)
 
   useEffect(() => {
     const HandleClickOutside = (event) => {
@@ -32,6 +30,8 @@ const Header = ({isLogin}) => {
     }
 
   }, [])
+
+
   return (
     <div className='size-full h-40 bg-gray-900 flex items-center justify-between sm:justify-around p-2 text-white sticky top-0 z-50'>
       <div className=''>

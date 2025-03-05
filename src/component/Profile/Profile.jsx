@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import mainPage from "../../assets/assest02.jpg"
 import { BsBank, BsCash, BsUnlock } from 'react-icons/bs'
 import { AiFillSafetyCertificate } from 'react-icons/ai'
@@ -13,6 +13,7 @@ import { MdOutlineSecurity } from "react-icons/md";
 import PaymentType from '../Payment/PaymentType'
 import Pin from '../Verify/Pin'
 import AtmForm from '../AtmForm/AtmForm'
+import { handleAccountData } from '../Store/AccounDataStore'
 
 const Profile = () => {
 
@@ -21,8 +22,10 @@ const Profile = () => {
   const [checkbalance, setCheckBalance] = useState(false)
   const [timer, setTimer] = useState(30)
   const [balanceCheck, setBalanceCheck] = useState(false)
-  const [atmTabClose,setAtmTabClose] = useState(false)
-  const {setIsLogin} = useOutletContext()
+  const [atmTabClose, setAtmTabClose] = useState(false)
+  const { setIsLogin } = useOutletContext()
+  const { foundUser } = useContext(handleAccountData);
+
 
   const navigate = useNavigate();
   const menuRef = useRef();
@@ -31,13 +34,14 @@ const Profile = () => {
     setOutSwitch(state => !state)
   }
 
-  const HandleAtmTabClose = ()=>{
+  const HandleAtmTabClose = () => {
     setAtmTabClose(state => !state)
   }
 
   const HandleLogOut = () => {
     navigate('/')
     setIsLogin(false)
+    // localStorage.setItem("isLogin",false);
   }
 
   useEffect(() => {
@@ -59,7 +63,7 @@ const Profile = () => {
     return () => {
       clearInterval(run)
     }
-  }, [timer,balanceCheck])
+  }, [timer, balanceCheck])
 
   useEffect(() => {
     const HandleClickOutside = (event) => {
@@ -79,22 +83,33 @@ const Profile = () => {
     setWithdrawTab(state => !state);
   }
 
+  // data
+
+  const userAccountNo = foundUser[0]?.accountNo || 1212121212
+  const userAccountName = foundUser[0]?.fullName.firstName + " " + foundUser[0]?.fullName.middleName + " " + foundUser[0]?.fullName.lastName || "Account Holder Name";
+  const userAccountBalance = foundUser[0]?.amount || 0;
+  const atmPin = foundUser[0]?.atmPin || "";
+  const atmStatus = foundUser[0]?.atm;
+  const refId = foundUser[0]?.newAccountId;
+
+
+
   return (
     <div>
-      {atmTabClose && <AtmForm setClose={setAtmTabClose}/>}
+      {atmTabClose && <AtmForm setClose={setAtmTabClose} atmStatus = {atmStatus}/>}
       {withdrawTab && <PaymentType setClose={setWithdrawTab} />}
-      {checkbalance && <Pin setCardState={setCheckBalance} setBalanceCheck={setBalanceCheck} />}
+      {checkbalance && <Pin setCardState={setCheckBalance} setBalanceCheck={setBalanceCheck} setAtmTab={setAtmTabClose} atmPin={atmPin} />}
       <div className='w-full min-h-[600px] flex flex-col sm:flex-row items-center justify-evenly relative'>
-        <div className='flex  items-center justify-center absolute top-4 right-10 p-1 cursor-pointer border rounded-md z-30'  onClick={HandleSwitch} >
+        <div className='flex  items-center justify-center absolute top-4 right-10 p-1 cursor-pointer border rounded-md z-30' onClick={HandleSwitch} >
           <BiMenu className='text-4xl text-gray-700' />
         </div>
-      
+
         {outSwitch && <div className='flex items-center flex-col justify-center absolute top-16 right-12 bg-gray-100 w-[180px] z-20 font-bold rounded-md cursor-pointer p-2' ref={menuRef} >
-            <a className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' href='#profileService'>Services</a>
-            <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleAtmTabClose}>Apply for Debit Card</p>
-            <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/application_status") }}>Check Status</p>
-            <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleLogOut}>Log Out</p>
-          </div>}
+          <a className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' href='#profileService'>Services</a>
+          <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleAtmTabClose}>Apply for Debit Card</p>
+          <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/application_status") }}>Check Status</p>
+          <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={HandleLogOut}>Log Out</p>
+        </div>}
         <div className='rounded-xl overflow-hidden md:w-[400px] lg:w-[800px] h-[600px] relative flex justify-center items-center flex-col popup'>
           <BsBank className='text-8xl text-gray-600' />
           <h1 className=' z-30 text-6xl sm:text-4xl top-40 left-24 text-white font-bold'
@@ -127,15 +142,15 @@ const Profile = () => {
         <div className='w-full md:w-[400px] lg:w-[800px] relative sm:top-40 sm:mb-40 lg:top-0 lg:mb-0'>
           <div className='flex flex-col p-4  gap-2'>
             <p className='text-xl font-medium text-sky-900'>Avl Balance:</p>
-            <p className='tracking-widest font-medium text-gray-500 text-4xl flex items-center gap-0 pl-10'>{balanceCheck ? <BiRupee className='text-xl' /> : <CgLock className='text-xl' />} <span className='text-[28px] text-green-500 font-bold'>{balanceCheck ? "100000":<span className='text-[12px] tracking-normal p-2 text-white ml-2 bg-red-500'> Unlock! Verify first using 4 digit PIN</span>}</span> <span className='text-[18px] font-bold text-blue-500 pl-10'>{balanceCheck && `${timer}s`}</span> </p>
+            <p className='tracking-widest font-medium text-gray-500 text-4xl flex items-center gap-0 pl-10'>{balanceCheck ? <BiRupee className='text-xl' /> : <CgLock className='text-xl' />} <span className='text-[28px] text-green-500 font-bold'>{balanceCheck ? userAccountBalance : <span className='text-[12px] tracking-normal p-2 text-white ml-2 bg-red-500'> Unlock! Verify first using 4 digit PIN</span>}</span> <span className='text-[18px] font-bold text-blue-500 pl-10'>{balanceCheck && `${timer}s`}</span> </p>
           </div>
           <div className='flex flex-col p-4 gap-1'>
             <p className='text-xl font-medium text-sky-900'>Account Holder Name:</p>
-            <p className='tracking-widest font-medium text-gray-500 text-2xl pl-10'>Mahavir Kumar Mahato</p>
+            <p className='tracking-widest font-medium text-gray-500 text-2xl pl-10'>{userAccountName}</p>
           </div>
           <div className='flex p-4 flex-col gap-1'>
             <p className='text-xl font-medium text-sky-900'>Account No.</p>
-            <p className=' text-4xl lg:text-6xl text-gray-400 tracking-widest font-medium pl-10'>123456789012</p>
+            <p className=' text-4xl lg:text-6xl text-gray-400 tracking-widest font-medium pl-10'>{userAccountNo}</p>
           </div>
           <div className='flex flex-col justify-center items-center gap-4'>
             <div className='relative'>

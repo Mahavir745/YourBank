@@ -4,9 +4,10 @@ import { CgClose } from 'react-icons/cg'
 import { useNavigate } from 'react-router-dom'
 import Notification from '../Notification/Notification'
 
-const Pin = ({ setCardState, setBalanceCheck }) => {
+const Pin = ({ setCardState, setBalanceCheck,atmPin,setAtmTab }) => {
   const [eyehide2, setEyeHide2] = useState(true)
   const menuRef = useRef();
+  const verifyPin = useRef();
 
 
   const HandleCutOption = () => {
@@ -15,8 +16,20 @@ const Pin = ({ setCardState, setBalanceCheck }) => {
 
   const HandleVerifyBtn = (e) => {
     e.preventDefault();
-    setBalanceCheck(true)
     setCardState(false)
+
+    if(atmPin === verifyPin.current.value){
+      setBalanceCheck(true)
+    }
+    else{
+      alert("PIN INCORRECT! TRY AGAIN")
+    }
+
+  }
+
+  const HandleAtmTab = ()=>{
+    setAtmTab(true)
+    setCardState(false);
   }
 
   useEffect(() => {
@@ -47,9 +60,10 @@ const Pin = ({ setCardState, setBalanceCheck }) => {
           <div className=' p-2 m-2'>
             <label htmlFor="password" className='font-medium text-gray-600'>PIN: <span className='text-red-700'>*</span></label>
             <div className='flex gap-2 flex-wrap mt-2 items-center border rounded-sm h-10 w-full border-gray-300 justify-between pr-2'>
-              <input type={eyehide2 ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px] text-gray-500' placeholder='password' id='password' />
+              <input type={eyehide2 ? "password" : "text"} className=' focus:outline-0 pl-4 text-[16px]  w-[90%] text-gray-500' placeholder='password' id='password' ref={verifyPin}/>
               {eyehide2 ? <BsEyeSlash className='text-blue-600 text-[18px]' onClick={() => setEyeHide2(state => !state)} /> : <BsEye className='text-blue-600 text-[18px]' onClick={() => setEyeHide2(state => !state)} />}
             </div>
+            <p className='text-blue-500 font-medium'>If you don't have PIN. <span className='text-red-600 underline text-[14px] cursor-pointer' onClick={HandleAtmTab}>Apply ATM Card</span></p>
           </div>
           <div className=' p-2 m-2 flex justify-center'>
             <button type='submit' className='text-white font-medium cursor-pointer border-sky-500 border pl-8 pr-8 p-2 rounded-md bg-sky-600' >Verify</button>

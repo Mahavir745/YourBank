@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 import mainPage from "../../assets/assest02.jpg"
 import { BsBank } from 'react-icons/bs'
@@ -9,6 +9,7 @@ import { CgProfile } from 'react-icons/cg'
 import Verify from '../Verify/Verify'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { BiMenu } from 'react-icons/bi'
+import { handleAccountData } from '../Store/AccounDataStore'
 
 const ApplicationStatus = () => {
 
@@ -18,7 +19,12 @@ const ApplicationStatus = () => {
   const [tabs, setTabs] = useState(false);
   const navigate = useNavigate();
   const tabRef = useRef();
-  const {setIsLogin} = useOutletContext()
+  const { setIsLogin } = useOutletContext()
+  let { foundUser, updateAtmStatus, totalAccount,setFoundUser } = useContext(handleAccountData);
+
+  // data
+  const refId = foundUser[0]?.newAccountId;
+  console.log(refId)
 
   useEffect(() => {
     let run;
@@ -31,6 +37,7 @@ const ApplicationStatus = () => {
     }
     else {
       clearInterval(run)
+      updateAtmStatus(refId)
     }
 
     return () => {
@@ -41,33 +48,44 @@ const ApplicationStatus = () => {
   const levelMeasurement = (100 / 30) * progress
 
   const HandleDownloadBtn = () => {
+    const updatedUser = totalAccount.map(ac => {
+      if (ac.newAccountId === refId) {
+        return { ...foundUser[0], atm: ac.atm };
+      }
+      return ac;
+    });
+
+    setFoundUser(updatedUser)
     setCardState(true)
   }
 
-  const HandleLogOUt = ()=>{
+  const HandleLogOUt = () => {
     setIsLogin(false)
     navigate("/")
+    // localStorage.setItem("isLogin",false);
+
   }
 
-  useEffect(()=>{
-    const HanldeTab = (event)=>{
-      if(tabRef.current && !tabRef.current.contains(event.target)){
+  useEffect(() => {
+    const HanldeTab = (event) => {
+      if (tabRef.current && !tabRef.current.contains(event.target)) {
         setTabs(false)
       }
     }
-    document.addEventListener("mousedown",HanldeTab);
+    document.addEventListener("mousedown", HanldeTab);
 
-    return ()=>{
-      document.removeEventListener("mousedown",HanldeTab)
+    return () => {
+      document.removeEventListener("mousedown", HanldeTab)
     }
-  },[])
+  }, [])
+
 
   return (
     <div className='w-full flex justify-center flex-wrap relative h-full min-h-[300px] mb-40 mt-20'>
       <div className='flex items-center justify-center absolute bg-white -top-10 right-10 p-1 cursor-pointer z-30' onClick={() => {
-          setTabs(state => !state)
-        }} >
-        <BiMenu className='text-4xl text-gray-700 cursor-pointer z-20'/>
+        setTabs(state => !state)
+      }} >
+        <BiMenu className='text-4xl text-gray-700 cursor-pointer z-20' />
       </div>
       {tabs && <div className='flex items-center flex-col justify-center absolute z-40 top-0 right-12 bg-gray-100 w-[180px] font-bold rounded-md cursor-pointer p-2' ref={tabRef}>
         <p className='text-gray-700 p-2 hover:bg-sky-200 w-full text-center rounded-md' onClick={() => { navigate("/profile") }}>Profile</p>
@@ -103,17 +121,17 @@ const ApplicationStatus = () => {
         </ul>
       </div>
       {cardState && <Verify setCardState={setCardState} />}
-      <div className='w-full lg:w-[600px] relative rounded-b-xl rounded-t-md border-0 md:border-gray-300 bg-white p-4'>
+      <div className='w-full lg:w-[600px] relative rounded-b-xl rounded-t-md border-0 md:border md:border-gray-300 bg-white p-4'>
         <div>
           <h1 className='text-center text-xl font-medium text-blue-600'>Application Status for Debit Card</h1>
         </div>
         <div className='w-full lg:w-[580px] flex flex-col'>
           <div className=' p-2 m-2 flex w-full justify-around items-center'>
-            <div className='border-0 w-28 h-28 rounded-full md:border-gray-300 flex justify-center items-center'>
+            <div className='border-0 w-28 h-28 rounded-full md:border md:border-gray-300 flex justify-center items-center'>
               <BsFillCheckCircleFill className='text-5xl text-green-500 border rounded-full p-2' />
             </div>
             <div className='h-28 w-[400px] flex flex-col justify-center relative'>
-              <div className=' text-center text-gray-900 font-medium md:text-2xl'>1234567890AWEFDGSHS</div>
+              <div className=' text-center text-gray-900 font-medium md:text-2xl'>{refId}</div>
               <div className='mt-4 text-center absolute top-[160px] right-[160px] text-[48px] md:text-[72px] text-gray-400'>{timer} s</div>
             </div>
           </div>
@@ -121,12 +139,12 @@ const ApplicationStatus = () => {
             <div className={`bg-green-400 absolute w-full border border-green-400`}
               style={{
                 height: `${levelMeasurement}%`,
-                transition:'height .4s linear',
+                transition: 'height .4s linear',
               }}
             ></div>
           </div>
           <div className=' p-2 m-2 flex w-full justify-around items-center'>
-            <div className='border-0 w-28 h-28 rounded-full lg:border-gray-300 flex items-center justify-center'>
+            <div className='border-0 w-28 h-28 rounded-full md:border lg:border-gray-300 flex items-center justify-center'>
               <BsFillCheckCircleFill className={`text-5xl border rounded-full p-2 ${progress === 30 ? "text-green-500" : "text-gray-400"}`} />
             </div>
             <div className='h-28 w-[400px] flex flex-col justify-center'>
